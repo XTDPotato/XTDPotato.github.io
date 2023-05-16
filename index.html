@@ -115,10 +115,83 @@
     <div class="mdui-panel-item-body">
 	<!-- 积分和求导常用公式表 /-->
 
+<table border="1" align="center">
+  <tr>
+    <th>公式</th>
+    <th>导数</th>
+    <th>不定积分</th>
+    <th>定积分</th>
+  </tr>
+  <tr>
+    <td>f(x) = k (常数)</td>
+    <td>f'(x) = 0</td>
+    <td>F(x) = kx + C</td>
+    <td>∫a^b k dx = k(b - a)</td>
+  </tr>
+  <tr>
+    <td>f(x) = x^n (n为常数)</td>
+    <td>f'(x) = nx^(n-1)</td>
+    <td>F(x) = (x^(n+1))/(n+1) + C</td>
+    <td>∫a^b x^n dx = [(b^(n+1))/(n+1)] - [(a^(n+1))/(n+1)]</td>
+  </tr>
+  <tr>
+    <td>f(x) = e^x</td>
+    <td>f'(x) = e^x</td>
+    <td>F(x) = e^x + C</td>
+    <td>∫a^b e^x dx = e^b - e^a</td>
+  </tr>
+  <tr>
+    <td>f(x) = ln(x)</td>
+    <td>f'(x) = 1/x</td>
+    <td>F(x) = x ln(x) - x + C</td>
+    <td>∫a^b ln(x) dx = (b ln(b) - b) - (a ln(a) - a)</td>
+  </tr>
+  <tr>
+    <td>f(x) = sin(x)</td>
+    <td>f'(x) = cos(x)</td>
+    <td>F(x) = -cos(x) + C</td>
+    <td>∫a^b sin(x) dx = -cos(b) + cos(a)</td>
+  </tr>
+  <tr>
+    <td>f(x) = cos(x)</td>
+    <td>f'(x) = -sin(x)</td>
+    <td>F(x) = sin(x) + C</td>
+    <td>∫a^b cos(x) dx = sin(a) - sin(b)</td>
+  </tr>
+  <tr>
+    <td>f(x) = tan(x)</td>
+    <td>f'(x) = sec^2(x)</td>
+    <td>F(x) = ln|sec(x)| + C</td>
+    <td>∫a^b tan(x) dx = ln|sec(a)| - ln|sec(b)|</td>
+  </tr>
+  <tr>
+    <td>f(x) = cot(x)</td>
+    <td>f'(x) = -csc^2(x)</td>
+    <td>F(x) = ln|sin(x)| + C</td>
+    <td>∫a^b cot(x) dx = ln|sin(b)| - ln|sin(a)|</td>
+  </tr>
+</table>
+
+
+<p>求导公式：</p>
+<p>常数求导：(c)' = 0，其中c是常数。</p>
+<p>幂函数求导：(x^n)' = nx^(n-1)，其中n是实数，x是自变量。</p>
+<p>指数函数求导：(e^x)' = e^x，其中e是自然对数的底数。</p>
+<p>对数函数求导：(ln(x))' = 1/x，其中ln表示以e为底的对数。</p>
+<p>三角函数求导：(sin(x))' = cos(x)，(cos(x))' = -sin(x)，(tan(x))' = sec^2(x)，其中sin、cos和tan表示正弦、余弦和正切函数。</p>
+<p>反三角函数求导：(arcsin(x))' = 1/√(1-x^2)，(arccos(x))' = -1/√(1-x^2)，(arctan(x))' = 1/(1+x^2)，其中arcsin、arccos和arctan表示反正弦、反余弦和反正切函数。</p>
+<p>链式法则：若y = f(g(x))，则y' = f'(g(x)) * g'(x)。</p>
+<p>积分公式：</p>
+<p>幂函数积分：∫x^n dx = (x^(n+1))/(n+1) + C，其中n不等于-1，C为常数。</p>
+<p>指数函数积分：∫e^x dx = e^x + C。</p>
+<p>对数函数积分：∫(1/x) dx = ln|x| + C。</p>
+<p>三角函数积分：∫sin(x) dx = -cos(x) + C，∫cos(x) dx = sin(x) + C，∫sec^2(x) dx = tan(x) + C。</p>
+<p>反三角函数积分：∫(1/√(1-x^2)) dx = arcsin(x) + C，∫(-1/√(1-x^2)) dx = arccos(x) + C，∫(1/(1+x^2)) dx = arctan(x) + C。</p>
+<p>分部积分法：∫u dv = uv - ∫v du，其中u和v都是关于自变量的函数。</p>
 
 	    <div class="mdui-panel-item-actions">
         <button class="mdui-btn mdui-ripple" mdui-panel-item-close>关闭</button>
-        <a href="study/switch_layer.html" target="_blank" class="mdui-btn mdui-ripple">放大</a>
+        <a href="study/math_jfqd.html" target="_blank" class="mdui-btn mdui-ripple">放大</a>
 </div></div></div></div>
 
 
@@ -156,12 +229,108 @@
     </div>
     <div class="mdui-panel-item-body">
 	<!-- 二层三层交换机区别 /-->
+	二层三层交换机区别
 <table><div><table border="1" align="center"><thead><tr><th>特点</th><th>二层交换机</th><th>三层交换机</th></tr></thead><tbody><tr><td>工作层次</td><td>第二层</td><td>第三层</td></tr><tr><td>主要功能</td><td>完成MAC地址的转发，实现局域网内的数据转发</td><td>实现MAC地址的转发和IP地址的路由，适用于中等规模的网络环境</td></tr><tr><td>操作对象</td><td>MAC地址</td><td>IP地址</td></tr><tr><td>数据转发方式</td><td>基于MAC地址的流量转发</td><td>基于IP地址和MAC地址的流量转发</td></tr><tr><td>网络拓扑</td><td>适用于扁平化网络结构（单一的广播域）</td><td>适用于分层网络结构（多个广播域）</td></tr><tr><td>路由协议支持</td><td>不支持路由协议</td><td>支持基础路由协议和高级路由协议</td></tr><tr><td>适用范围</td><td>适用于小型局域网</td><td>适用于中等规模的企业级网络</td></tr></tbody></table>
 
 	    <div class="mdui-panel-item-actions">
         <button class="mdui-btn mdui-ripple" mdui-panel-item-close>关闭</button>
         <a href="study/switch_layer.html" target="_blank" class="mdui-btn mdui-ripple">放大</a>
-</div></div></div></div>
+</div></div></div>
+<div class="mdui-panel-item">
+    <div class="mdui-panel-item-header mdui-ripple">
+      <div class="mdui-panel-item-title">RIP 和OSPF协议的功能对比</div>
+      <div class="mdui-panel-item-summary"></div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	<!-- RIP 和OSPF协议的功能对比 /-->
+	RIP 和OSPF协议的功能对比
+<table border="1" align="center">
+  <tr>
+    <th>特征</th>
+    <th>RIPv1</th>
+    <th>RIPv2</th>
+    <th>OSPF</th>
+  </tr>
+  <tr>
+    <td>协议类型</td>
+    <td>距离矢量</td>
+    <td>距离矢量</td>
+    <td>链路状态</td>
+  </tr>
+  <tr>
+    <td>路由算法</td>
+    <td>Bellman-Ford</td>
+    <td>Bellman-Ford</td>
+    <td>Dijkstra</td>
+  </tr>
+  <tr>
+    <td>无类支持</td>
+    <td>否</td>
+    <td>是</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>VLSM支持</td>
+    <td>是</td>
+    <td>是</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>自动汇总</td>
+    <td>是</td>
+    <td>是</td>
+    <td>否</td>
+  </tr>
+  <tr>
+    <td>手动汇总</td>
+    <td>否</td>
+    <td>是</td>
+    <td>是</td>
+  </tr>
+  <tr>
+    <td>不连续子网支持</td>
+    <td>否</td>
+    <td>是</td>
+    <td>是</td>
+  </tr>
+  <tr>
+    <td>度量值</td>
+    <td>跳数</td>
+    <td>跳数</td>
+    <td>带宽</td>
+  </tr>
+  <tr>
+    <td>跳数限制</td>
+    <td>15</td>
+    <td>15</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td>汇聚</td>
+    <td>慢</td>
+    <td>慢</td>
+    <td>快</td>
+  </tr>
+  <tr>
+    <td>分层网络</td>
+    <td>否</td>
+    <td>否</td>
+    <td>分区域</td>
+  </tr>
+  <tr>
+    <td>路由更新方式</td>
+    <td>周期性更新路由表</td>
+    <td>周期性更新路由表</td>
+    <td>触发式更新</td>
+  </tr>
+</table>
+
+	    <div class="mdui-panel-item-actions">
+        <button class="mdui-btn mdui-ripple" mdui-panel-item-close>关闭</button>
+        <a href="study/rip_ospf.html" target="_blank" class="mdui-btn mdui-ripple">放大</a>
+</div></div></div>
+</div>
 
 
 <!-- 模拟电子技术 /-->
@@ -199,19 +368,36 @@
     <div class="mdui-panel-item-body">
 	<!-- 基岩正式版 /-->
 <div class="mdui-list">
-  <a href="#" class="mdui-list-item mdui-ripple">1.19.73</a>
-  <a href="#" class="mdui-list-item mdui-ripple">1.19.71</a>
-  <a href="#" class="mdui-list-item mdui-ripple">1.19.70</a>
+  <a href="https://klpbbs.com/xz" class="mdui-list-item mdui-ripple">苦力怕社区</a>
 </div>
 
 	    <div class="mdui-panel-item-actions">
         <button class="mdui-btn mdui-ripple" mdui-panel-item-close>关闭</button>
 </div></div></div></div>
 
-</div><div id="tab4-content" class="mdui-p-a-2">
+</div><div id="tab4-content" class="mdui-p-a-2"/>
 <!-- 4 -->
 <p class="mdui-dialog-subtitle mdui-text-color-blue-500">基岩版Addon附加包资源</p>
 
+<div class="mdui-panel" mdui-panel>
+
+  <div class="mdui-panel-item">
+    <div class="mdui-panel-item-header mdui-ripple">
+      <div class="mdui-panel-item-title">猫鼠ADDON</div>
+      <div class="mdui-panel-item-summary"></div>
+      <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+    </div>
+    <div class="mdui-panel-item-body">
+	<!-- 版本 /-->
+<div class="mdui-list">
+  <a href="https://www.123pan.com/s/RzbrVv-OAj0d.html" class="mdui-list-item mdui-ripple">夏日游轮一测试版 最新版本 20230502</a>
+</div>
+
+	    <div class="mdui-panel-item-actions">
+        <button class="mdui-btn mdui-ripple" mdui-panel-item-close>关闭</button>
+</div></div></div></div>
+
+</div><div id="tab4-content" class="mdui-p-a-2"/>
 
 </div></body>
 

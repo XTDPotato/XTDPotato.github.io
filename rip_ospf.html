@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RIP 和OSPF协议的功能对比</title>
+ 	<style type="text/css">
+		h1 {text-align:center; font-size: 26px;}
+		table {margin: 0 auto; border-collapse: collapse; font-size: 18px;}
+		td, th {border: 1px solid black; padding: 8px; text-align: center;}
+		th {background-color: #dfd;}
+	</style>
+   </head>
+	<body>
+		<table>
+  <tr>
+    <th>特征</th>
+    <th>RIPv1</th>
+    <th>RIPv2</th>
+    <th>OSPF</th>
+  </tr>
+  <tr>
+    <td>协议类型</td>
+    <td>距离矢量</td>
+    <td>距离矢量</td>
+    <td>链路状态</td>
+  </tr>
+  <tr>
+    <td>路由算法</td>
+    <td>Bellman-Ford</td>
+    <td>Bellman-Ford</td>
+    <td>Dijkstra</td>
+  </tr>
+  <tr>
+    <td>无类支持</td>
+    <td>否</td>
+    <td>是</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>VLSM支持</td>
+    <td>是</td>
+    <td>是</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>自动汇总</td>
+    <td>是</td>
+    <td>是</td>
+    <td>否</td>
+  </tr>
+  <tr>
+    <td>手动汇总</td>
+    <td>否</td>
+    <td>是</td>
+    <td>是</td>
+  </tr>
+  <tr>
+    <td>不连续子网支持</td>
+    <td>否</td>
+    <td>是</td>
+    <td>是</td>
+  </tr>
+  <tr>
+    <td>度量值</td>
+    <td>跳数</td>
+    <td>跳数</td>
+    <td>带宽</td>
+  </tr>
+  <tr>
+    <td>跳数限制</td>
+    <td>15</td>
+    <td>15</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td>汇聚</td>
+    <td>慢</td>
+    <td>慢</td>
+    <td>快</td>
+  </tr>
+  <tr>
+    <td>分层网络</td>
+    <td>否</td>
+    <td>否</td>
+    <td>分区域</td>
+  </tr>
+  <tr>
+    <td>路由更新方式</td>
+    <td>周期性更新路由表</td>
+    <td>周期性更新路由表</td>
+    <td>触发式更新</td>
+  </tr>
+</table>
+	</body>
+</html>
