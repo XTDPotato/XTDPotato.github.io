@@ -115,7 +115,7 @@
   </mdui-tab-panel>
   <mdui-tab-panel style="margin:5px;" slot="panel" value="notes">
   <!-- 笔记  内容 -->
-  <p>这里是笔记内容页面</p>
+  <p>这里是笔记内容页面，如果点击一次没有反应可能要再点一次</p>
   
   
   
@@ -256,7 +256,7 @@
   copy_content.textContent = "加载中";
   var timer = setTimeout(function () {
               copy_content.textContent = text;
-         }, 200);
+         }, 500);
   
   
   note_copy_dialog.open = true;
