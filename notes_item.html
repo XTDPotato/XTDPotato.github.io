@@ -50,9 +50,9 @@
 <!-- 查看笔记内容以及复制 -->
 <mdui-dialog stacked-actions fullscreen headline="笔记名称" class="note_copy_dialog" height="100%">
 <iframe src="note1.html" id="note_frame" style="border:0px;display:none;" width="90%" height="100%"></iframe>
-  <mdui-text-field id="copy_content" rows="10" max-rows="20" style="width:90%;height:100%;" label="笔记内容"></mdui-text-field>
+  <mdui-text-field id="copy_content" rows="30" max-rows="30" style="margin:5px;width:90%;height:100%;" label="笔记内容"></mdui-text-field>
  <mdui-button id="copy_btn" slot="action" variant="text">复制全文</mdui-button>
- <mdui-button id="close_btn" slot="action" variant="text">关闭</mdui-button>
+ <mdui-button id="close_btn" slot="action" variant="tonal">关闭</mdui-button>
  </mdui-dialog>
 
 <script>
@@ -121,15 +121,9 @@ async function copyStr() { // 使用异步函数
   var textarea = document.getElementById("copy_content");
   // 选中textarea中的文本
   textarea.select();
-  // 使用现代的复制 API
-  try {
-    await navigator.clipboard.writeText(textarea.value);
-    // 弹出提示信息
-    main_snackbar.textContent = "已复制";
-    main_snackbar.open = true;
-  } catch (err) {
-    console.error("复制失败", err);
-  }
+  document.execCommand("copy");
+
+
 }
 
 
