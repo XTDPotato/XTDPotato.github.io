@@ -124,9 +124,9 @@
  
   <mdui-list>
   
-  <mdui-list-item rounded class="btn_note" index="0" description="点击打开查看笔记内容">一个临时IPv6地址</mdui-list-item>
-  <mdui-list-item rounded class="btn_note" index="1" description="内容太多了会怎么样呢？我也不清楚">测试条目2</mdui-list-item>
-  <mdui-list-item rounded class="btn_note" index="2" description="点击打开查看笔记内容">测试条目3</mdui-list-item>
+  <mdui-list-item rounded class="btn_note" id="note1" description="点击打开查看笔记内容">一个临时IPv6地址</mdui-list-item>
+  <mdui-list-item rounded class="btn_note" id="note2" description="内容太多了会怎么样呢？我也不清楚">测试条目2</mdui-list-item>
+  <mdui-list-item rounded class="btn_note" id="note3" description="点击打开查看笔记内容">测试条目3</mdui-list-item>
   
   
   
@@ -140,11 +140,6 @@
   <p>这里是教程内容页面</p>
   
   <mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
-  </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
-  </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
-  </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
-  </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
-  </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
   </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
   </mdui-card><mdui-card clickable variant="outlined" style="width: 100%;height: 200px">
   </mdui-card>
@@ -178,7 +173,8 @@
 
 <!-- 查看笔记内容以及复制 -->
 <mdui-dialog stacked-actions close-on-overlay-click headline="笔记名称" class="note_copy_dialog">
- <textarea id="copy_content" style="width:90%;height:100%" readonly>内容</textarea>
+<iframe src="note1.html" id="note_frame" width="90%" height="100%"></iframe>
+ <textarea id="copy_content" style="width:90%;height:100%" readonly></textarea>
  <mdui-button slot="action" id="copy_btn" variant="text">复制全文</mdui-button>
  </mdui-dialog>
 
@@ -221,6 +217,7 @@
   const m_or_s_123pan_dialog = document.querySelector(".m_or_s_dialog");
   const note_copy_dialog = document.querySelector(".note_copy_dialog");
   const btn_notes = document.querySelectorAll(".btn_note");
+  const note_frame = document.getElementById("note_frame");
   const note_ipv6 = "通过获取";
   const copy_btn = document.getElementById("copy_btn");
   var main_fab_click_change = 0;
@@ -239,39 +236,24 @@
   
   });
 
-  //笔记
-  var notes = []; // 定义一个空数组
-  var files = 3; // 定义要读取的文件数量
-  var count = 0; // 定义一个计数器
-  for (let i = 1; i <= files; i++) {
-  //遍历文件序号
-  var xhr = new XMLHttpRequest();
-  // 创建一个 XMLHttpRequest 对象
-  xhr.open("GET", "note" + i + ".txt", true);
-  // 设置请求的方法，URL，和异步标志
-  xhr.onreadystatechange = function() {
-  // 设置请求的回调函数
-    if (xhr.readyState == 4 && xhr.status == 200) {
-    // 如果请求成功
-      notes.push(xhr.responseText);
-      // 将响应的文本放入数组中
-      count++; // 增加计数器的值
-      if (count == files) { // 如果所有文件都读取完毕
-        main_snackbar.textContent = "笔记已加载";
-        main_snackbar.open = true;
-      }
-    }
-  };
-  xhr.send(); // 发送请求
-}
-
+  
   //笔记点击事件
   // 遍历列表项，给每个列表项添加点击事件
   for (let btn_note of btn_notes) {
     btn_note.addEventListener("click", () => {
   note_copy_dialog.headline = btn_note.textContent;
   //内容需要用其他方法展现
-  copy_content.textContent = notes[btn_note.index];
+  note_frame.src = "notes/"+btn_note.id+".html"
+  
+  
+  // 获取 <iframe> 里面的文档对象
+  var iframeDoc = note_frame.contentDocument || note_frame.contentWindow.document;
+  // 获取 <iframe> 里面的目标元素
+  var target = iframeDoc.getElementById("text");
+  // 获取目标元素的文本内容
+  var text = target.innerHTML || target.textContent;
+  
+  copy_content.textContent = text;
   note_copy_dialog.open = true;
   
  
