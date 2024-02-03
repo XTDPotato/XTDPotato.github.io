@@ -84,7 +84,7 @@
   <!-- 资源  内容 -->
   <p>这里是资源内容页面</p>
   
-  <iframe src="resources_item.html" style="border:0px" width="100%" height="100%"></iframe>
+  <iframe id="resources_item_frame" src="resources_item.html" style="border:0px" width="100%" height="100%"></iframe>
   
   <mdui-list>
   <mdui-list-subheader>资源</mdui-list-subheader>
@@ -119,7 +119,7 @@
   <p>这里是笔记内容页面，如果点击一次没有反应可能要再点一次</p>
   
   <mdui-list>
-  <iframe src="notes_item.html" style="border:0px" width="100%" height="100%"></iframe>
+  <iframe id="notes_item_frame" src="notes_item.html" style="border:0px" width="100%" height="100%"></iframe>
   
   </mdui-list>
 
@@ -206,9 +206,9 @@
   const co_m_or_s_official = document.getElementById("co_m_or_s_official");
   const m_or_s_dialog = document.querySelector(".m_or_s_dialog");
   const m_or_s_123pan_dialog = document.querySelector(".m_or_s_dialog");
-  const note_copy_dialog = document.querySelector(".note_copy_dialog");
-  const btn_notes = document.querySelectorAll(".btn_note");
   const note_frame = document.getElementById("note_frame");
+  const notes_item_frame = document.getElementById("notes_item_frame");
+  const resources_item_frame = document.getElementById("resources_item_frame");
   const note_ipv6 = "通过获取";
   const copy_btn = document.getElementById("copy_btn");
   var main_fab_click_change = 0;
@@ -227,6 +227,14 @@
   
   });
 
+  var timer = setTimeout(function () {
+  // 获取 <iframe> 里面的文档对象
+  var iframeDoc = notes_item_frame.contentDocument || notes_item_frame.contentWindow.document;
+  // 获取 <iframe> 里面的目标元素
+  note_copy_dialog = iframeDoc.querySelector(".note_copy_dialog");
+  btn_notes = iframeDoc.querySelectorAll(".btn_note");
+  var target = iframeDoc.getElementById("text");
+         }, 200);
   
   //笔记点击事件
   // 遍历列表项，给每个列表项添加点击事件
