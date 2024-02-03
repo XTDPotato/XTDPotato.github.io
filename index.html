@@ -86,27 +86,7 @@
   
   <iframe id="resources_item_frame" src="resources_item.html" style="border:0px" width="100%" height="100%"></iframe>
   
-  <mdui-list>
-  <mdui-list-subheader>资源</mdui-list-subheader>
-  <mdui-collapse class="example-value">
-    <mdui-collapse-item value="item-1">
-      <mdui-list-item slot="header" icon="near_me">Moonlight+Sunhine串流<mdui-icon slot="end-icon" class="example-trigger" name="keyboard_arrow_down"></mdui-icon></mdui-list-item>
-      <div style="margin-left: 2.5rem">
-        <mdui-list-item href="https://www.123pan.com/s/RzbrVv-0qdKd.html" id="co_m_or_s_123pan">123盘(包含改版等)</mdui-list-item>
-        <mdui-list-item id="co_m_or_s_official">官网</mdui-list-item>
-      </div>
-    </mdui-collapse-item>
-    <mdui-collapse-item value="item-2">
-      <mdui-list-item slot="header" icon="near_me">Minecraft基岩版<mdui-icon slot="end-icon" mdui-panel-item-arrow class="example-trigger" name="keyboard_arrow_down"></mdui-icon></mdui-list-item>
-      <div style="margin-left: 2.5rem">
-        <mdui-list-item href="https://www.minecraft.net" target="_blank">官网</mdui-list-item>
-        <mdui-list-item href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&utm_source=mcnet" target="_blank">谷歌商店(需要魔法)</mdui-list-item>
-        <mdui-list-item href="https://www.microsoft.com/zh-sg/p/minecraft-for-windows/9nblggh2jhxj?activetab=pivot:overviewtab" target="_blank">微软商店</mdui-list-item>
-        <mdui-list-item href="https://klpbbs.com/xz" target="_blank">苦力怕社区(仅供体验)</mdui-list-item>
-      </div>
-    </mdui-collapse-item>
-  </mdui-collapse>
-  </mdui-list>
+  
   
   
   
@@ -116,10 +96,9 @@
   </mdui-tab-panel>
   <mdui-tab-panel style="margin:5px;" slot="panel" value="notes">
   <!-- 笔记  内容 -->
-  <p>这里是笔记内容页面，如果点击一次没有反应可能要再点一次</p>
   
   <mdui-list>
-  <iframe id="notes_item_frame" src="notes_item.html" style="border:0px" width="100%" height="100%"></iframe>
+  <iframe id="notes_item_frame" src="notes_item.html" style="border:0px" width="100%" height="600px"></iframe>
   
   </mdui-list>
 
@@ -154,21 +133,6 @@
 
 
 
-<!-- Moonlight与Sunshine的官网选择 -->
-<mdui-dialog stacked-actions close-on-overlay-click headline="选择要打开的官网" class="m_or_s_dialog">
-  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-qt/releases" variant="text">Moonlight PC客户端Github</mdui-button>
-  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-android/releases" variant="text">Moonlight 安卓客户端Github</mdui-button>
-  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-qt/releases" variant="text">Moonlight iOS客户端Github</mdui-button>
-  <mdui-button slot="action" href="https://github.com/LizardByte/Sunshine/releases" variant="text">Sunhine PC服务端Github</mdui-button>
-</mdui-dialog>
-
-<!-- 查看笔记内容以及复制 -->
-<mdui-dialog stacked-actions close-on-overlay-click headline="笔记名称" class="note_copy_dialog">
-<iframe src="note1.html" id="note_frame" style="border:0px;display:none;" width="90%" height="100%"></iframe>
- <textarea id="copy_content" style="width:90%;height:100%" readonly></textarea>
- <mdui-button slot="action" id="copy_btn" variant="text">复制全文</mdui-button>
- </mdui-dialog>
-
 <!-- 添加笔记对话框 -->
 <mdui-dialog close-on-overlay-click class="add_note_dialog">
   <span slot="headline">添加新的笔记</span>
@@ -187,103 +151,33 @@
 <mdui-snackbar class="snackbar_no_action">提示</mdui-snackbar>
 
 <script>
-  //定义常驻变量
-  const navigationDrawer = document.querySelector(".main-drawer");
-  const openDrawerButton = document.getElementById("fab_menu");
-  const closeDrawerButton = navigationDrawer.querySelector("mdui-button");
-  const main_tabs = document.getElementById("main_tabs");
-  const main_nv_home = document.getElementById("rail_item_home");
-  const main_nv_resources = document.getElementById("rail_item_resources");
-  const main_nv_notes = document.getElementById("rail_item_notes");
-  const main_nv_course = document.getElementById("rail_item_course");
-  const main_fab = document.getElementById("main_fab");
-  const add_note_dialog = document.querySelector(".add_note_dialog");
-  const add_note_dialog_cancel = document.getElementById("add_note_dialog_cancel");
-  const add_note_dialog_create = document.getElementById("add_note_dialog_create");
-  const add_note_ct_content = document.getElementById("add_note_dialog_ct_content");
-  const main_snackbar = document.querySelector(".snackbar_no_action");
-  const co_m_or_s_123pan = document.getElementById("co_m_or_s_123pan");
-  const co_m_or_s_official = document.getElementById("co_m_or_s_official");
-  const m_or_s_dialog = document.querySelector(".m_or_s_dialog");
-  const m_or_s_123pan_dialog = document.querySelector(".m_or_s_dialog");
-  const note_frame = document.getElementById("note_frame");
-  const notes_item_frame = document.getElementById("notes_item_frame");
-  const resources_item_frame = document.getElementById("resources_item_frame");
-  const note_ipv6 = "通过获取";
-  const copy_btn = document.getElementById("copy_btn");
-  var main_fab_click_change = 0;
-  
-  
-  
-  //浮动按钮初始化
-  main_fab.disabled = false;
-  main_fab.icon = "refresh--outlined"
-  
-  
-  //MorS官网点击事件
-  co_m_or_s_official.addEventListener("click", () =>{
-  m_or_s_dialog.open = true;
-  
-  
-  });
+//定义常驻变量
+"use strict"; // 添加严格模式指令
+let navigationDrawer = document.querySelector(".main-drawer"); // 使用 let 声明可变对象
+let openDrawerButton = document.getElementById("fab_menu");
+let closeDrawerButton = navigationDrawer.querySelector("mdui-button");
+let main_tabs = document.getElementById("main_tabs");
+let main_nv_home = document.getElementById("rail_item_home");
+let main_nv_resources = document.getElementById("rail_item_resources");
+let main_nv_notes = document.getElementById("rail_item_notes");
+let main_nv_course = document.getElementById("rail_item_course");
+let main_fab = document.getElementById("main_fab");
+let add_note_dialog = document.querySelector(".add_note_dialog");
+let add_note_dialog_cancel = document.getElementById("add_note_dialog_cancel");
+let add_note_dialog_create = document.getElementById("add_note_dialog_create");
+let add_note_ct_content = document.getElementById("add_note_dialog_ct_content");
+let main_snackbar = document.querySelector(".snackbar_no_action");
 
-  var timer = setTimeout(function () {
-  // 获取 <iframe> 里面的文档对象
-  var iframeDoc = notes_item_frame.contentDocument || notes_item_frame.contentWindow.document;
-  // 获取 <iframe> 里面的目标元素
-  note_copy_dialog = iframeDoc.querySelector(".note_copy_dialog");
-  btn_notes = iframeDoc.querySelectorAll(".btn_note");
-  var target = iframeDoc.getElementById("text");
-         }, 200);
-  
-  //笔记点击事件
-  // 遍历列表项，给每个列表项添加点击事件
-  for (let btn_note of btn_notes) {
-    btn_note.addEventListener("click", () => {
-  note_copy_dialog.headline = btn_note.textContent;
-  //内容需要用其他方法展现
-  note_frame.src = "notes/"+btn_note.id+".html"
-  
-  
+let note_frame = document.getElementById("note_frame");
+let notes_item_frame = document.getElementById("notes_item_frame");
+let resources_item_frame = document.getElementById("resources_item_frame");
+let main_fab_click_change = 0;
 
-  copy_content.textContent = "加载中";
-  copy_btn.disable = true;
-  
-  var timer = setTimeout(function () {
-  // 获取 <iframe> 里面的文档对象
-  var iframeDoc = note_frame.contentDocument || note_frame.contentWindow.document;
-  // 获取 <iframe> 里面的目标元素
-  var target = iframeDoc.getElementById("text");
-  // 获取目标元素的文本内容
-  var text = target.innerHTML || target.textContent;
-              copy_content.textContent = text;
-         copy_btn.disable = false;
-         }, 200);
-  
-  
-  note_copy_dialog.open = true;
-  
- 
-  });
-  }
-  
-  //复制按钮
-  copy_btn.addEventListener("click", ()=>{
-  copyStr()
-  
-  });
-  // 定义一个复制函数
-  function copyStr() {
-  // 获取textarea元素
-  var textarea = document.getElementById("copy_content");
-  // 选中textarea中的文本
-  textarea.select();
-  // 执行复制命令
-  document.execCommand("copy");
-  // 弹出提示信息
-  main_snackbar.textContent = "已复制";
-  main_snackbar.open = true;
-}
+
+
+//浮动按钮初始化
+main_fab.disabled = false;
+main_fab.icon = "refresh--outlined"
 
   //浮动按钮添加的点击事件
   main_fab.addEventListener("click", () =>{
@@ -380,6 +274,12 @@
   
   
 });
+
+
+
+
+
+
 
 
 

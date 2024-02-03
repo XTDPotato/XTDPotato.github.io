@@ -30,7 +30,7 @@
 <!-- Two Tone -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet">
 
-    <title>笔记项目</title>
+    <title>资源项目</title>
   </head>
 <body>
 
@@ -42,7 +42,7 @@
     <mdui-collapse-item value="item-1">
       <mdui-list-item slot="header" icon="near_me">Moonlight+Sunhine串流<mdui-icon slot="end-icon" class="example-trigger" name="keyboard_arrow_down"></mdui-icon></mdui-list-item>
       <div style="margin-left: 2.5rem">
-        <mdui-list-item href="https://www.123pan.com/s/RzbrVv-0qdKd.html" id="co_m_or_s_123pan">123盘(包含改版等)</mdui-list-item>
+        <mdui-list-item href="https://www.123pan.com/s/RzbrVv-0qdKd.html" target="_blank" id="co_m_or_s_123pan">123盘(包含改版等)</mdui-list-item>
         <mdui-list-item id="co_m_or_s_official">官网</mdui-list-item>
       </div>
     </mdui-collapse-item>
@@ -62,4 +62,29 @@
   
   
 </body>
+<!-- Moonlight与Sunshine的官网选择 -->
+<mdui-dialog stacked-actions close-on-overlay-click headline="选择要打开的官网" class="m_or_s_dialog">
+  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-qt/releases" target="_blank" variant="text">Moonlight PC客户端Github</mdui-button>
+  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-android/releases" target="_blank" variant="text">Moonlight 安卓客户端Github</mdui-button>
+  <mdui-button slot="action" href="https://github.com/moonlight-stream/moonlight-qt/releases" target="_blank" variant="text">Moonlight iOS客户端Github</mdui-button>
+  <mdui-button slot="action" href="https://github.com/LizardByte/Sunshine/releases" target="_blank" variant="text">Sunhine PC服务端Github</mdui-button>
+</mdui-dialog>
+
+
+
+
+<script>
+let co_m_or_s_123pan = document.getElementById("co_m_or_s_123pan");
+let co_m_or_s_official = document.getElementById("co_m_or_s_official");
+let m_or_s_dialog = document.querySelector(".m_or_s_dialog");
+let m_or_s_123pan_dialog = document.querySelector(".m_or_s_dialog");
+
+//MorS官网点击事件
+co_m_or_s_official.addEventListener("click", () =>{
+  if (m_or_s_dialog) { // 检查元素是否存在
+    m_or_s_dialog.open = true;
+  }
+});
+</script>
+
 </html>
