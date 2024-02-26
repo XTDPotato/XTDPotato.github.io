@@ -27,16 +27,9 @@ for (let btn_note of btn_notes) {
     // 等待 iframe 加载完成
     note_frame.onload = function() {
 
-		
-        copy_content.style.display = "block";
-        note_frame.style.display = "block";
-        note_loading_progress.style.display = "none";
-     
-    };
-  });
-  // 监听来自iframe的消息
-window.addEventListener('message', function(event) {
-var note_frame = document.getElementById("note_frame");
+		// 监听来自iframe的消息
+	window.addEventListener('message', function(event) {
+	var note_frame = document.getElementById("note_frame");
     // 确保消息来自预期的iframe
     if (event.source !== note_frame.contentWindow) return;
 
@@ -46,6 +39,13 @@ var note_frame = document.getElementById("note_frame");
         	document.getElementById('copy_content').textContent = event.data.text;
     }
 }, false);
+        copy_content.style.display = "block";
+        note_frame.style.display = "block";
+        note_loading_progress.style.display = "none";
+     
+    };
+  });
+  
   
 
 

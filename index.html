@@ -53,7 +53,7 @@
     <mdui-navigation-rail-item id="rail_item_home" value="home" icon="home--outlined">主页</mdui-navigation-rail-item>
     <mdui-navigation-rail-item id="rail_item_resources" value="resources" icon="archive--outlined">资源</mdui-navigation-rail-item>
     <mdui-navigation-rail-item id="rail_item_notes" value="notes" icon="notes--outlined">笔记</mdui-navigation-rail-item>
-    <mdui-navigation-rail-item id="rail_item_course" value="course" icon="tips_and_updates--outlined">教程</mdui-navigation-rail-item>
+    <mdui-navigation-rail-item id="rail_item_courses" value="courses" icon="tips_and_updates--outlined">教程</mdui-navigation-rail-item>
     
   </mdui-navigation-rail>
 
@@ -63,7 +63,7 @@
   <mdui-tab style="display:none;" value="home">主页</mdui-tab>
   <mdui-tab style="display:none;" value="resources">资源</mdui-tab>
   <mdui-tab style="display:none;" value="notes">笔记</mdui-tab>
-  <mdui-tab style="display:none;" value="course">教程</mdui-tab>
+  <mdui-tab style="display:none;" value="courses">教程</mdui-tab>
   
   
   <mdui-tab-panel style="margin:5px;" slot="panel" value="home">
@@ -98,11 +98,11 @@
 
 
   </mdui-tab-panel>
-  <mdui-tab-panel style="margin:5px;" slot="panel" value="course">
+  <mdui-tab-panel style="margin:5px;" slot="panel" value="courses">
   <!-- 教程  内容 -->
   
   
-  <iframe id="course_frame" src="course.html" style="border:0px" width="100%" height="600px"></iframe>
+  <iframe id="courses_frame" src="courses.html" style="border:0px" width="100%" height="600px"></iframe>
   
   
 
@@ -142,142 +142,8 @@
 <!-- SnackBar -->
 <mdui-snackbar class="snackbar_no_action">提示</mdui-snackbar>
 
-<script>
-//定义常驻变量
-"use strict"; // 添加严格模式指令
-let navigationDrawer = document.querySelector(".main-drawer"); // 使用 let 声明可变对象
-let openDrawerButton = document.getElementById("fab_menu");
-let closeDrawerButton = navigationDrawer.querySelector("mdui-button");
-let main_tabs = document.getElementById("main_tabs");
-let main_nv_home = document.getElementById("rail_item_home");
-let main_nv_resources = document.getElementById("rail_item_resources");
-let main_nv_notes = document.getElementById("rail_item_notes");
-let main_nv_course = document.getElementById("rail_item_course");
-let main_fab = document.getElementById("main_fab");
-let add_note_dialog = document.querySelector(".add_note_dialog");
-let add_note_dialog_cancel = document.getElementById("add_note_dialog_cancel");
-let add_note_dialog_create = document.getElementById("add_note_dialog_create");
-let add_note_ct_content = document.getElementById("add_note_dialog_ct_content");
-let main_snackbar = document.querySelector(".snackbar_no_action");
+<script type="text/javascript" src="js/index.js">
 
-let note_frame = document.getElementById("note_frame");
-let notes_item_frame = document.getElementById("notes_item_frame");
-let resources_item_frame = document.getElementById("resources_item_frame");
-let main_fab_click_change = 0;
-
-
-
-//浮动按钮初始化
-main_fab.disabled = false;
-main_fab.icon = "refresh--outlined"
-
-  //浮动按钮添加的点击事件
-  main_fab.addEventListener("click", () =>{
-  if(main_fab_click_change==0){
-  window.location.reload();
-  
-  }else if(main_fab_click_change==1){
-  main_snackbar.textContent = "暂时不支持上传资源";
-  main_snackbar.open = true;
-  
-  }else if(main_fab_click_change==2){
-  add_note_dialog_ct_content.value = "";
-  add_note_dialog.open = true;
-  
-  
-  
-  }else if(main_fab_click_change==3){
-  main_snackbar.textContent = "暂时不支持添加教程";
-  main_snackbar.open = true;
-  
-  
-  }
-  
-  
-  
-  });
-  
-  
-  //添加笔记对话框取消按钮点击事件
-  add_note_dialog_cancel.addEventListener("click", () =>{
-  add_note_dialog.open = false;
-  
-  
-  });
-  //添加笔记对话框创建按钮点击事件
-  add_note_dialog_create.addEventListener("click", () =>{
-  add_note_dialog.open = false;
-  
-  
-  });
-  
-  
-  
-  
-  //点击菜单的打开抽屉点击事件
-  openDrawerButton.addEventListener("click", ()=>{
-  navigationDrawer.open = true;
-
-});
-
-  //抽屉里面的关闭抽屉按钮点击事件
-  closeDrawerButton.addEventListener("click", () =>{
-  navigationDrawer.open = false;
-  
-  });
-  
- //标签页主页点击事件
- main_nv_home.addEventListener("click", ()=>{
-  main_tabs.value = "home";
-  main_fab_click_change = 0;
-  main_fab.disabled = false;
-  main_fab.icon = "refresh--outlined";
-  
-});
-
-  //标签页资源点击事件
- main_nv_resources.addEventListener("click", ()=>{
-  main_tabs.value = "resources";
-  main_fab_click_change = 1;
-  main_fab.disabled = false;
-  main_fab.icon = "upload--outlined";
-  
-  
-});
-
-  //标签页笔记点击事件
-  main_nv_notes.addEventListener("click", ()=>{
-  main_tabs.value = "notes";
-  main_fab.disabled = false;
-  main_fab_click_change = 2;
-  main_fab.disabled = false;
-  main_fab.icon = "add--outlined"
-  
-  
-});
-
-//标签页教程点击事件
-  main_nv_course.addEventListener("click", ()=>{
-  main_tabs.value = "course";
-  main_fab.disabled = false;
-  main_fab_click_change = 3;
-  main_fab.disabled = false;
-  main_fab.icon = "near_me--outlined"
-  
-  
-});
-
-
-
-
-
-
-
-
-
-
-
- 
  
 </script>
 
