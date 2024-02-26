@@ -25,35 +25,38 @@ for (let btn_note of btn_notes) {
     note_loading_progress.style.display = "block";
 
     // 等待 iframe 加载完成
-    note_frame.onload = function() {
+	function frame_loaded() {
 
 		
         copy_content.style.display = "block";
         note_frame.style.display = "block";
         note_loading_progress.style.display = "none";
      
-    };
-  });
-  // 监听来自iframe的消息
+	 
+	   // 监听来自iframe的消息
 window.addEventListener('message', function(event) {
 var note_frame = document.getElementById("note_frame");
     // 确保消息来自预期的iframe
     if (event.source !== note_frame.contentWindow) return;
 
     // 确保消息是你期望的类型
-    if (event.data.type === 'updateText') {
+    if (event.data.type === 'noteTC') {
         // 更新父页面中的文本
-        	document.getElementById('copy_content').textContent = event.data.text;
+        	document.getElementById('copy_content').text = event.data.text;
+			  note_copy_dialog.open = false;
     }
 }, false);
-  
+	 
+    };
+	setTimeout(frame_loaded, 500);
 
 
 
   
-  
-}
 
+  
+  
+})};
 
 
 

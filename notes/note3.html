@@ -35,10 +35,16 @@
 
 
 
-<p id="text" class="note_text">第三个<p>
+<p id="note3" class="note_text">第三个<p>
 
+<script type="text/javascript">
+var note_text = document.getElementById("note3");
 
+	var tx_note3 = note_text.textContent;
+	console.log(tx_note3);
 
+// 发送消息到父页面
+parent.postMessage({ type: 'noteTC', text: tx_note3 }, '*');
 
 </body>
 

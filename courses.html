@@ -65,7 +65,7 @@
 	<mdui-dialog stacked-actions fullscreen id="course_dialog" class="course_dialog"
 	height="100%">
 		<iframe src="" id="course_frame" style="border:0px;display:none;"
-		width="100%" height="100%">
+		width="100%" height="600px">
 		</iframe>
 
 		<mdui-circular-progress id="course_loading_progress"></mdui-circular-progress>
@@ -129,7 +129,7 @@ var course_frame = document.getElementById("course_frame");
     if (event.source !== course_frame.contentWindow) return;
 
     // 确保消息是你期望的类型
-    if (event.data.type === 'updateText') {
+    if (event.data.type === 'courseOC') {
         // 更新父页面中的文本
         	course_dialog.open = false;
     }

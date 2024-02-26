@@ -50,8 +50,8 @@
 </mdui-dropdown>
 </mdui-top-app-bar>
 <p>这里是一个关于MC基岩版的自定义NPC对话框和Server form的界面UI的教程</p>
-
-
+<p>下载一个例子以继续下面操作</p>
+<mdui-button full-width href="https://www.123pan.com/s/RzbrVv-Ql3Kd.html" target="_blank">下载例子（123盘）</mdui-button>
 
 
 
@@ -65,18 +65,59 @@
 </body>
 
 <!-- SnackBar -->
-<mdui-snackbar class="snackbar_no_action">提示</mdui-snackbar>
+<mdui-snackbar placement="top-start" class="snackbar_no_action">提示</mdui-snackbar>
 
 
 
 <script>
 let back_to_courses = document.querySelector(".back_to_courses");
+let star_click = document.querySelector(".star_click")
+let snackbar_no_action = document.querySelector(".snackbar_no_action")
+
+star_testfor()
+
+
+//收藏按钮点击事件
+star_click.addEventListener("click", () =>{
+	snackbar_no_action.open = false
+	var course1_son_sv = localStorage.getItem('course1_son');
+	if(course1_son_sv == "true"){
+	localStorage.setItem('course1_son', 'false');
+	snackbar_no_action.textContent = "已取消收藏"
+	snackbar_no_action.open = true
+	}else{
+	localStorage.setItem('course1_son', 'true');
+	snackbar_no_action.textContent = "已收藏"
+	snackbar_no_action.open = true
+	}
+		star_testfor()
+	
+	
+})
+
+
+
 
 //返回按钮点击事件
 back_to_courses.addEventListener("click", () =>{
    // 发送消息到父页面
-    parent.postMessage({ type: 'updateText', text: '关闭了' }, '*');
+    parent.postMessage({ type: 'courseOC', text: '关闭了' }, '*');
 })
+
+
+
+async function star_testfor() {
+// 使用异步函数
+// 从 localStorage 中检索变量
+var course1_son_sv = localStorage.getItem('course1_son');
+if(course1_son_sv == "true"){
+star_click.icon = "star"
+
+}else{
+star_click.icon = "star_border"
+
+}
+}
 
 </script>
 

@@ -33,9 +33,16 @@
     <title>笔记一</title>
   </head>
 
-<p id="note_text" class="note_text">只能这样读取但是不能直接获取源码<p>
+<p id="note1" class="note_text">只能这样读取但是不能直接获取源码<p>
 
-<script type="text/javascript" src="js/note.js">
+<script type="text/javascript">
+var note_text = document.getElementById("note1");
+
+	var tx_note1 = note_text.textContent;
+
+
+// 发送消息到父页面
+parent.postMessage({ type: 'noteTC', text: tx_note1 }, '*');
 
 </script>
 
